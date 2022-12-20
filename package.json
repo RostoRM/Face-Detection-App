@@ -1,5 +1,5 @@
 {
-  "name": "face-detection-app-original",
+  "name": "face-detection-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
