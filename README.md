@@ -1,5 +1,10 @@
 # Face-Detection App
 
+This is a full stack web application that detects the faces in
+an image. I built this web app using React for the front-end,
+Node.js and Express.js for the back-end, and PostgreSQL for
+the Database.
+
 # for local installation
 
 1. Clone this repo
