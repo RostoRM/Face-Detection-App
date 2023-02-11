@@ -15,7 +15,13 @@ Front-end of App is Deployed on Netlify, Backend and Databases are Deployed on R
 
 https://rostorm-facedetection.netlify.app/
 
-If you want to sign in, without register you can just enter this credentials:
+If you want to sign in, without register you can just enter one of this credentials:
 
 Email: Bob@gmail.com
+Password: 123
+
+Email: Anna@gmail.com
+Password: 123
+
+Email: John@gmail.com
 Password: 123
