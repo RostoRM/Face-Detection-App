@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import ParticlesBg from 'particles-bg';
-import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-import NavigationLogo from './components/NavigationLogo/NavigationLogo';
-import Signin from './components/Signin/Signin';
-import Register from './components/Register/Register';
-import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
-import Rank from './components/Rank/Rank';
-import './App.css';
+import React, { Component } from "react";
+import ParticlesBg from "particles-bg";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import NavigationLogo from "./components/NavigationLogo/NavigationLogo";
+import Signin from "./components/Signin/Signin";
+import Register from "./components/Register/Register";
+import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import Rank from "./components/Rank/Rank";
+import "./App.css";
 
 const initialState = {
-  input: '',
-  imageUrl: '',
+  input: "",
+  imageUrl: "",
   box: {},
-  route: 'signin',
+  route: "signin",
   isSignedIn: false,
   user: {
-    id: '',
-    name: '',
-    email: '',
+    id: "",
+    name: "",
+    email: "",
     entries: 0,
-    joined: '',
+    joined: "",
   },
 };
 
@@ -43,7 +43,7 @@ class App extends Component {
 
   calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
-    const image = document.getElementById('inputimage');
+    const image = document.getElementById("inputimage");
     const width = Number(image.width);
     const height = Number(image.height);
     return {
@@ -64,9 +64,9 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('https://face-detection-app-api.onrender.com/imageurl', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("https://face-detection-app-api.onrender.com/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         input: this.state.input,
       }),
@@ -74,9 +74,9 @@ class App extends Component {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch('https://face-detection-app-api.onrender.com/image', {
-            method: 'put',
-            headers: { 'Content-Type': 'application/json' },
+          fetch("https://face-detection-app-api.onrender.com/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               id: this.state.user.id,
             }),
@@ -93,9 +93,9 @@ class App extends Component {
   };
 
   onRouteChange = (route) => {
-    if (route === 'signout') {
+    if (route === "signout") {
       this.setState(initialState);
-    } else if (route === 'home') {
+    } else if (route === "home") {
       this.setState({ isSignedIn: true });
     }
     this.setState({ route: route });
@@ -104,16 +104,16 @@ class App extends Component {
   render() {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
-      <div className='App'>
-        <ParticlesBg color='#ffffff' type='cobweb' bg={true} />
+      <div className="App">
+        <ParticlesBg color="#ffffff" type="cobweb" bg={true} />
         <NavigationLogo isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-        {route === 'home' ? (
+        {route === "home" ? (
           <div>
             <Rank name={this.state.user.name} entries={this.state.user.entries} />
             <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
-        ) : route === 'signin' ? (
+        ) : route === "signin" ? (
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
           <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
