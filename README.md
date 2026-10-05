@@ -1,9 +1,6 @@
 # Face-Detection App
 
-This is a full stack web application that detects the faces in
-an image. I built this web app using React for the front-end,
-Node.js and Express.js for the back-end, and PostgreSQL for
-the Database.
+This is a full-stack web application that detects faces in an image. I built this web app using React for the front-end, Node.js and Express.js for the back-end, and PostgreSQL for the database. Face detection is powered by MediaPipe Tasks Vision, which processes images in the browser and detects faces without requiring a separate face-detection API service.
 
 # for local installation
 
@@ -11,7 +8,7 @@ the Database.
 2. Run `npm install`
 3. Run `npm start`
 
-Front-end of App is Deployed on Netlify, Backend and Databases are Deployed on Render, visit this link:
+Front-end of App is Deployed on Netlify, Backend is Deployed on Render, Databases is Deployed on neon, visit this link:
 
 https://rostorm-facedetection.netlify.app/
 
